@@ -1,8 +1,8 @@
-angular.module( 'ngBoilerplate', [
+angular.module( 'myKnee', [
   'templates-app',
   'templates-common',
-  'ngBoilerplate.home',
-  'ngBoilerplate.about',
+  'myKnee.home',
+  'myKnee.about',
   'ui.state',
   'ui.route'
 ])
