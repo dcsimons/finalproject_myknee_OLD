@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Survey.create(surgery_type: "Total Knee Replacement", time_period: "1 Month")
+Survey.create(surgery_type: "Total Knee Replacement", time_period: "3 Months")
+Survey.create(surgery_type: "Partial Knee Replacement", time_period: "6 Months")
+Survey.create(surgery_type: "Total Knee Replacement", time_period: "9 Months")
+Survey.create(surgery_type: "Partial Knee Replacement", time_period: "12 Months")

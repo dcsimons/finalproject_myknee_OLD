@@ -1,24 +1,20 @@
 class SurveysController < ApplicationController
+  before_filter :intercept_html_requests
+  layout false
+  respond_to :json
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
   # GET /surveys.json
   def index
     @surveys = Survey.all
+    render json: @surveys
   end
 
   # GET /surveys/1
   # GET /surveys/1.json
   def show
-  end
-
-  # GET /surveys/new
-  def new
-    @survey = Survey.new
-  end
-
-  # GET /surveys/1/edit
-  def edit
+    render json: @survey
   end
 
   # POST /surveys
@@ -26,28 +22,20 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.new(survey_params)
 
-    respond_to do |format|
-      if @survey.save
-        format.html { redirect_to @survey, notice: 'Survey was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @survey }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
-      end
+    if @survey.save
+      render json: @survey, status: :created
+    else
+      render json: @survey.errors, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /surveys/1
   # PATCH/PUT /surveys/1.json
   def update
-    respond_to do |format|
-      if @survey.update(survey_params)
-        format.html { redirect_to @survey, notice: 'Survey was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @survey.errors, status: :unprocessable_entity }
-      end
+    if @survey.update(survey_params)
+      head :no_content
+    else
+      render json: @survey.errors, status: :unprocessable_entity
     end
   end
 
@@ -55,10 +43,8 @@ class SurveysController < ApplicationController
   # DELETE /surveys/1.json
   def destroy
     @survey.destroy
-    respond_to do |format|
-      format.html { redirect_to surveys_url }
-      format.json { head :no_content }
-    end
+    
+    head :no_content
   end
 
   private
@@ -70,5 +56,10 @@ class SurveysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def survey_params
       params.require(:survey).permit(:surgery_type, :time_period)
+    end
+
+    # if someone asks for html, redirect them to the home page, we only serve json
+    def intercept_html_requests
+      redirect_to('/') if request.format == Mime::HTML
     end
 end
