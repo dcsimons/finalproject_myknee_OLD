@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  surgery_type: MyString
+  time_period: MyString
+
+two:
+  surgery_type: MyString
+  time_period: MyString

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Surgery type:</strong>
+  <%= @survey.surgery_type %>
+</p>
+
+<p>
+  <strong>Time period:</strong>
+  <%= @survey.time_period %>
+</p>
+
+<%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%= link_to 'Back', surveys_path %>

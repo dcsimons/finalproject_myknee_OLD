@@ -1,0 +1,17 @@
+<div>
+  <h1>Survey functions</h1>
+  <p>Soon this will show a list of all the clubs, based on information from the server</p>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <td>Surgery Type</td>
+      <td>Survey</td>
+    </thead>
+    <tr ng-repeat="survey in surveys">
+      <td>{{survey.surgery_type}}</td>
+      <td>{{survey.time_period}}</td>
+    </tr>
+  </table>
+</div>

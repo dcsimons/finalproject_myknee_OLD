@@ -3,6 +3,7 @@ angular.module( 'myKnee', [
   'templates-common',
   'myKnee.home',
   'myKnee.about',
+  'myKnee.survey',
   'ui.state',
   'ui.route'
 ])
@@ -17,10 +18,8 @@ angular.module( 'myKnee', [
 .controller( 'AppCtrl', function AppCtrl ( $scope, $location ) {
   $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){
     if ( angular.isDefined( toState.data.pageTitle ) ) {
-      $scope.pageTitle = toState.data.pageTitle + ' | ngBoilerplate' ;
+      $scope.pageTitle = toState.data.pageTitle + ' | myKnee' ;
     }
   });
-})
-
-;
+});
 
