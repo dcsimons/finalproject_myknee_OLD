@@ -57,9 +57,5 @@ class SurveysController < ApplicationController
     def survey_params
       params.require(:survey).permit(:surgery_type, :time_period)
     end
-
-    # if someone asks for html, redirect them to the home page, we only serve json
-    def intercept_html_requests
-      redirect_to('/') if request.format == Mime::HTML
-    end
+    
 end
