@@ -3,7 +3,8 @@
  */
 
 angular.module( 'myKnee.survey', [
-  'ui.state'
+  'ui.state',
+  'ngResource'
 ])
 
 /**
@@ -26,9 +27,13 @@ angular.module( 'myKnee.survey', [
 /**
  * Define a controller for our route.
  */
-.controller( 'SurveysCtrl', function SurveysController( $scope ) {
-  $scope.surveys = [
-    {surgery_type: "hard coded surgery type 1", time_period: "hard coded survey 1"},
-    {surgery_type: "hard coded surgery type 2", time_period: "hard coded survey 2"}
-  ];
+.controller( 'SurveysCtrl', function SurveysController( $scope, SurveyResults ) {
+  $scope.surveys = SurveyResults.query();
+})
+
+/**
+ * Add a resource to allow us to get at the server
+ */
+.factory( 'SurveyResults', function ( $resource ) {
+  return $resource('../surveys.json');
 });

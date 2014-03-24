@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   before_filter :intercept_html_requests
   layout false
   respond_to :json
-  before_action :set_survey, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   # GET /questions
   # GET /questions.json
