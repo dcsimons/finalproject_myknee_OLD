@@ -32,11 +32,11 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-      if @question.update(question_params)
-        head :no_content
-      else
-        render json: @question.errors, status: :unprocessable_entity
-      end
+    if @question.update(question_params)
+      head :no_content
+    else
+      render json: @question.errors, status: :unprocessable_entity
+    end
   end
 
   # DELETE /questions/1
